@@ -1,0 +1,31 @@
+nav {
+    /* margin: 20px 0 10px; */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    
+}
+
+nav ul a {
+    padding: 10px;
+    display: block;
+    color: #333;
+}
+
+nav ul a:hover,
+nav ul a:focus {
+    background-color: #ddd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul a.active {
+    background-color: #ddd;
+    font-weight: bold;
+    text-decoration: none;
+}

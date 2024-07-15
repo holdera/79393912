@@ -13,3 +13,9 @@ body {
   color: #333333;
   line-height: 1;
 }
+
+main#content {
+  position: relative;
+    overflow-y: scroll;
+    height: 62vh;
+}
