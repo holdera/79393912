@@ -10,13 +10,12 @@ export default function HomePage() {
 
 	useEffect(() => {
 		dispatch(getActivityFeed());
-	}, [dispatch]);
+	}, [dispatch, callActivity]);
 
 	function archiveAllCallsHandler() {
 		activeCalls.map((item) => {
 			dispatch(archiveCall({ call_id: item.id }));
 		});
-		console.log(activeCalls);
 	}
 
 	const activeCalls = callActivity.filter((call) => !call.is_archived);

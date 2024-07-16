@@ -12,20 +12,16 @@ export default function ArchivePage() {
 
 	useEffect(() => {
 		dispatch(getActivityFeed());
-	}, [dispatch]);
+	}, [dispatch, callActivity]);
 
 	function unarchiveHandler() {
-		dispatch(unarchiveCalls()).then(() => {
-			navigate('/');
-		});
+		dispatch(unarchiveCalls());
 	}
 
 	return (
 		<>
 			<Button onClick={unarchiveHandler}>Unarchive all calls</Button>
-			<section className='activity-container'>
-				{callActivity && <Archives data={callActivity} />}
-			</section>
+			{callActivity && <Archives data={callActivity} />}
 		</>
 	);
 }

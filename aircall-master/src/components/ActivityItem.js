@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { archiveCall } from '../store/call-actions';
 import { NavLink } from 'react-router-dom';
 import Button from './ui/Button';
-import { formatDate } from '../utils/helpers';
+import { formatDate, formatPhoneNumber } from '../utils/helpers';
 
 import ArchiveIcon from './svgs/ArchiveIcon';
 import InboundIcon from './svgs/InboundIcon';
@@ -34,7 +34,7 @@ export default function ActivityItem({ call }) {
 			</div>
 			<NavLink to={call.id}>
 				<div className='activity-feed__from'>
-					<p>{call.from}</p>
+					<p>{formatPhoneNumber(call.from)}</p>
 				</div>
 				<div className='activity-feed__date'>
 					<p>{formatDate(callDate)}</p>
