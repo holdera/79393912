@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import RootLayout from './components/structure/RootLayout.js';
-import Home, { loader as activityFeedLoader } from './pages/Home.js';
-import CallDetailPage, {
-	loader as callDetailLoader,
-} from './pages/CallDetail.js';
-import ArchivePage, { action as unarchiveAction } from './pages/Archive.js';
-import { action as activityAction } from './components/Activity.js';
+import RootLayout from './components/structure/RootLayout';
+import Home from './pages/Home';
+import CallDetailPage, { loader as callDetailLoader } from './pages/CallDetail';
+import ArchivePage, { action as unarchiveAction } from './pages/Archive';
+import ChatPage from './pages/Chats';
+import UserPage from './pages/User';
 
 const router = createBrowserRouter([
 	{
@@ -34,6 +32,14 @@ const router = createBrowserRouter([
 				path: 'archive',
 				element: <ArchivePage />,
 				action: unarchiveAction,
+			},
+			{
+				path: 'chat',
+				element: <ChatPage />,
+			},
+			{
+				path: 'user',
+				element: <UserPage />,
 			},
 		],
 	},

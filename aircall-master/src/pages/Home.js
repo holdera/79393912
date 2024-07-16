@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getActivityFeed, archiveCall } from '../store/call-actions';
-import { ENDPOINT } from '../utils/endpoint';
 import Activity from '../components/Activity';
 import Button from '../components/ui/Button';
 
@@ -14,29 +13,18 @@ export default function HomePage() {
 	}, [dispatch]);
 
 	function archiveAllCallsHandler() {
-		//dispatch(archiveAllCalls());
 		activeCalls.map((item) => {
 			dispatch(archiveCall({ call_id: item.id }));
 		});
 		console.log(activeCalls);
 	}
 
-	// Filter out archived calls
 	const activeCalls = callActivity.filter((call) => !call.is_archived);
 
 	return (
 		<>
-			<Button onClick={archiveAllCallsHandler}>Archive all calls</Button>
+			<Button onClick={archiveAllCallsHandler}>Archive All</Button>
 			{activeCalls.length > 0 && <Activity data={activeCalls} />}
 		</>
 	);
 }
-
-// export async function loader() {
-// 	const response = await fetch(`${ENDPOINT}/activities`);
-// 	if (!response.ok) {
-// 		throw json({ message: 'Failed to load activities' }, { status: 500 });
-// 	}
-// 	const data = await response.json();
-// 	return data;
-// }
