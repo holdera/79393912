@@ -6,9 +6,14 @@ export default function Activity({ data }) {
 	return (
 		<div className='activity-container' id='activity-feed'>
 			<ul>
-				{data.map((call) => (
-					<ActivityItem key={call.id} call={call} />
-				))}
+				{data
+					.sort(
+						(a, b) =>
+							new Date(b.created_at) - new Date(a.created_at)
+					)
+					.map((call) => (
+						<ActivityItem key={call.id} call={call} />
+					))}
 			</ul>
 		</div>
 	);

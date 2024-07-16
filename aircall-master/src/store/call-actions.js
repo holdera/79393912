@@ -65,11 +65,6 @@ export const archiveCall = createAsyncThunk(
 export const archiveAllCalls = () => {
 	return (dispatch, getState) => {
 		const { callActivity } = getState().calls;
-
-		// Simulate archiving by moving all calls from callActivity to archivedCalls
 		dispatch(callActions.archiveAllCalls(callActivity));
-
-		// Optionally, clear callActivity state if needed
-		dispatch(callActions.clearCallActivity());
 	};
 };

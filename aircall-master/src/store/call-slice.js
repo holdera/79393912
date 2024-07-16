@@ -17,18 +17,18 @@ const callSlice = createSlice({
 			);
 		},
 		archiveCallState(state, action) {
-			const archivedCall = action.payload;
-			state.callActivity = state.callActivity.filter(
-				(call) => call.id !== archivedCall.id
+			const callId = action.payload;
+			const callIndex = state.callActivity.findIndex(
+				(call) => call.id === callId
 			);
-			state.archivedCalls.push(archivedCall);
+			if (callIndex !== -1) {
+				state.callActivity[callIndex].is_archived = true;
+				state.archivedCalls.push(state.callActivity[callIndex]);
+				state.callActivity.splice(callIndex, 1);
+			}
 		},
 		archiveAllCalls(state, action) {
 			state.callActivity = [...state.archivedCalls, ...action.payload];
-		},
-		clearCallActivity(state) {
-			// Clear active calls
-			state.callActivity = [];
 		},
 	},
 	extraReducers: (builder) => {

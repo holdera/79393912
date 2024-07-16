@@ -21,10 +21,12 @@ export default function ArchivePage() {
 	}
 
 	return (
-		<section className='container-view'>
+		<>
 			<Button onClick={unarchiveHandler}>Unarchive all calls</Button>
-			{callActivity && <Archives data={callActivity} />}
-		</section>
+			<section className='activity-container'>
+				{callActivity && <Archives data={callActivity} />}
+			</section>
+		</>
 	);
 }
 
