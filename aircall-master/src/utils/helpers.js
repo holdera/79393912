@@ -6,3 +6,9 @@ export function convertDuration(time) {
 	const ifMinutes = minutes > 0 ? `${minutes} minutes, and ` : '';
 	return `${ifHours}${ifMinutes}${seconds} seconds`;
 }
+
+export function formatDate(date) {
+	const theDate = new Date(date);
+	const formattedDate = theDate.toLocaleDateString();
+	return formattedDate;
+}

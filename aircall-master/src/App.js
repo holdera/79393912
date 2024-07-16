@@ -7,7 +7,8 @@ import Home, { loader as activityFeedLoader } from './pages/Home.js';
 import CallDetailPage, {
 	loader as callDetailLoader,
 } from './pages/CallDetail.js';
-import Archive from './pages/Archive.js';
+import ArchivePage, { action as unarchiveAction } from './pages/Archive.js';
+import { action as activityAction } from './components/Activity.js';
 
 const router = createBrowserRouter([
 	{
@@ -17,7 +18,6 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
-				loader: activityFeedLoader,
 			},
 			{
 				path: ':callId',
@@ -30,7 +30,11 @@ const router = createBrowserRouter([
 					},
 				],
 			},
-			{ path: 'archive', element: <Archive /> },
+			{
+				path: 'archive',
+				element: <ArchivePage />,
+				action: unarchiveAction,
+			},
 		],
 	},
 ]);
@@ -38,7 +42,5 @@ const router = createBrowserRouter([
 const App = () => {
 	return <RouterProvider router={router} />;
 };
-
-ReactDOM.render(<App />, document.getElementById('app'));
 
 export default App;

@@ -1,5 +1,9 @@
-.activity-feed {
+#activity-feed ul{
+    margin-top: 1.3rem;
+}
 
+.activity-container  {
+    padding: 0px 18px 0px;
 }
 
 .activity-feed ul {
@@ -17,12 +21,29 @@
     padding-top: 0;
 }
 
+.activity-feed__call-details a {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 100%;
+}
+
 .activity-feed__phone-icon {
-    width: 30px;
-    height: 30px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
 }
 .activity-feed__phone-icon img,
 .activity-feed__phone-icon svg {
     width: 100%;
     height: 100%;
+}
+
+.activity-feed__from{
+    width: 50%;
+}
+
+.activity-feed__date {
+    width: 20%;
 }

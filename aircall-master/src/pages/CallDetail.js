@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Await, defer, json, useRouteLoaderData } from 'react-router-dom';
 import ActivityDetail from '../components/ActivityDetail';
+import { ENDPOINT } from '../utils/endpoint';
 
 export default function CallDetailPage() {
 	const { callDetail } = useRouteLoaderData('call-detail');
@@ -18,11 +19,9 @@ export default function CallDetailPage() {
 }
 
 async function loadSingleActivityFeed(id) {
-	const response = await fetch(
-		`https://aircall-backend.onrender.com/activities/${id}`
-	);
+	const response = await fetch(`${ENDPOINT}/activities/${id}`);
 	if (!response.ok) {
-		throw json({ message: 'Fetch call log detials.' }, { status: 500 });
+		throw json({ message: 'Fetch call log details.' }, { status: 500 });
 	} else {
 		const data = await response.json();
 		return data;

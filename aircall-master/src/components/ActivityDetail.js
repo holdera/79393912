@@ -8,7 +8,7 @@ export default function ActivityDetail({ activity }) {
 	const duration = convertDuration(activity.duration);
 
 	return (
-		<div className='activity-detail'>
+		<div className='activity-container' id='activity-detail '>
 			<div className='activity-detail__hero'></div>
 			<div className='__date'>
 				<p>

@@ -1,34 +1,42 @@
-import { Suspense } from 'react';
-import { Await, defer, json, useLoaderData } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getActivityFeed, archiveCall } from '../store/call-actions';
+import { ENDPOINT } from '../utils/endpoint';
 import Activity from '../components/Activity';
+import Button from '../components/ui/Button';
 
 export default function HomePage() {
-	const { userCalls } = useLoaderData();
-	console.log(userCalls);
-	return (
-		<Suspense fallback={<p className='loader'>Loading...</p>}>
-			<Await resolve={userCalls}>
-				{(calls) => <Activity data={calls} />}
-			</Await>
-		</Suspense>
-	);
-}
+	const dispatch = useDispatch();
+	const callActivity = useSelector((state) => state.calls.callActivity);
 
-async function loadActivityFeed() {
-	const response = await fetch(
-		'https://aircall-backend.onrender.com/activities'
-	);
-	if (!response.ok) {
-		throw json({ message: 'Could not fetch call logs.' }, { status: 500 });
-	} else {
-		const data = await response.json();
-		console.log(data);
-		return data;
+	useEffect(() => {
+		dispatch(getActivityFeed());
+	}, [dispatch]);
+
+	function archiveAllCallsHandler() {
+		//dispatch(archiveAllCalls());
+		activeCalls.map((item) => {
+			dispatch(archiveCall({ call_id: item.id }));
+		});
+		console.log(activeCalls);
 	}
+
+	// Filter out archived calls
+	const activeCalls = callActivity.filter((call) => !call.is_archived);
+
+	return (
+		<>
+			<Button onClick={archiveAllCallsHandler}>Archive all calls</Button>
+			{activeCalls.length > 0 && <Activity data={activeCalls} />}
+		</>
+	);
 }
 
-export function loader() {
-	return defer({
-		userCalls: loadActivityFeed(),
-	});
-}
+// export async function loader() {
+// 	const response = await fetch(`${ENDPOINT}/activities`);
+// 	if (!response.ok) {
+// 		throw json({ message: 'Failed to load activities' }, { status: 500 });
+// 	}
+// 	const data = await response.json();
+// 	return data;
+// }

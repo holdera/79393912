@@ -2,13 +2,15 @@ import ActivityItem from './ActivityItem';
 import { defer, json } from 'react-router-dom';
 import { ENDPOINT } from '../utils/endpoint';
 
-export default function Activity({ data }) {
+export default function Archives({ data }) {
 	return (
 		<div className='activity-container' id='activity-feed'>
 			<ul>
-				{data.map((call) => (
-					<ActivityItem key={call.id} call={call} />
-				))}
+				{data.map((call) => {
+					if (call.is_archived === true) {
+						return <ActivityItem key={call.id} call={call} />;
+					}
+				})}
 			</ul>
 		</div>
 	);
