@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import Button from './ui/Button';
 import { formatDate, formatPhoneNumber } from '../utils/helpers';
 
-import ArchiveIcon from './svgs/ArchiveIcon';
-import InboundIcon from './svgs/InboundIcon';
-import OutboundIcon from './svgs/OutboundIcon';
+import ArchiveIcon from './Svgs/ArchiveIcon';
+import InboundIcon from './Svgs/InboundIcon';
+import OutboundIcon from './Svgs/OutboundIcon';
 
 export default function ActivityItem({ call }) {
 	const dispatch = useDispatch();
