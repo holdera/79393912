@@ -13,6 +13,16 @@ export function formatDate(date) {
 	return formattedDate;
 }
 
+export function formatLongDate(date) {
+	const theDate = new Date(date);
+	const formattedDate = theDate.toLocaleDateString([], {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+	return formattedDate;
+}
+
 export function formatPhoneNumber(phoneNumber) {
 	const cleaned = ('' + phoneNumber).replace(/\D/g, '');
 	const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/);
@@ -22,4 +32,14 @@ export function formatPhoneNumber(phoneNumber) {
 	}
 
 	return phoneNumber;
+}
+
+export function formatDateTime(date) {
+	const d = date.split('T');
+	const theDate = new Date(d.toString());
+	const timeOnly = theDate.toLocaleTimeString([], {
+		hour: 'numeric',
+		minute: 'numeric',
+	});
+	return timeOnly;
 }

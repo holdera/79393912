@@ -34,7 +34,7 @@ export default function ActivityItem({ call }) {
 			</div>
 			<NavLink to={call.id}>
 				<div className='activity-feed__from'>
-					<p>{formatPhoneNumber(call.from)}</p>
+					<p>{formatPhoneNumber(call.to)}</p>
 				</div>
 				<div className='activity-feed__date'>
 					<p>{formatDate(callDate)}</p>

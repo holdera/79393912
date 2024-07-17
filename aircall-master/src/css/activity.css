@@ -62,3 +62,57 @@ button.activity-feed__button:hover,
 button.activity-feed__button:focus {
     background: none;
 }
+
+.activity-detail__hero h1 {
+    margin-top: 0.875rem;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 6000;
+}
+
+.activity-detail__hero img {
+    width: 100%;
+    max-width: 50%;
+    margin: 10px auto 5px;
+    display: block;
+}
+
+.activity-detail__details {
+    border-radius: 1.25rem;
+    background-color: rgba(94,94,94,0.2);
+    padding: 10px 1.25rem;
+    margin: 1.25rem 0;
+}
+
+.activity-detail__actions {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-detail__action {
+    border-radius: 1.25rem;
+    background-color: rgba(94, 94, 94, 0.2);
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    border: none;
+    gap: 0.313rem;
+    align-items: center;
+    font-size: 1rem;
+}
+
+button.activity-detail__action{
+    padding: 24.5px 1.25rem;
+}
+
+.activity-detail__call-answer {
+    display: flex;
+    gap: 9px;
+}
+
+.activity-detail__call-answer span{
+    display: block;
+    margin-top: 0.313rem;
+}
